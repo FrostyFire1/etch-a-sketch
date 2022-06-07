@@ -1,3 +1,4 @@
+let savedColor = "";
 let selectedColor = "yellow";
 
 function makeGrid(sideLength) {
@@ -8,8 +9,22 @@ function makeGrid(sideLength) {
     for (let j = 0; j < sideLength; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
+      cell.style.backgroundColor = "white";
       cell.addEventListener("mouseenter", () => {
-        cell.style.backgroundColor = selectedColor;
+        if (cell.style.backgroundColor !== "white") {
+          console.log("yes");
+          return;
+        }
+        if (selectedColor === "random") {
+          let red = Math.floor(Math.random() * 255);
+          let green = Math.floor(Math.random() * 255);
+          let blue = Math.floor(Math.random() * 255);
+          let rgb = `rgb(${red},${green},${blue})`;
+          console.log(rgb);
+          cell.style.backgroundColor = rgb;
+        } else {
+          cell.style.backgroundColor = selectedColor;
+        }
       });
       row.appendChild(cell);
     }
@@ -34,4 +49,15 @@ gridButtton.addEventListener("click", () => {
   removeGrid();
   makeGrid(answer);
 });
+
+let rgbButton = document.querySelector("#rgb");
+rgbButton.addEventListener("click", () => {
+  if (selectedColor === "random") {
+    selectedColor = savedColor;
+  } else {
+    savedColor = selectedColor;
+    selectedColor = "random";
+  }
+});
+
 makeGrid(16);

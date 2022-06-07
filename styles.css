@@ -6,7 +6,7 @@ body {
 }
 
 .buttons {
-  align-items: center;
+  align-items: inherit;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,6 @@ body {
   border: none;
   border-radius: 4px;
   margin: 2% 0%;
-  width: fit-content;
 }
 
 .grid {
@@ -34,7 +33,6 @@ body {
   flex: 1;
 }
 .cell {
-  background-color: white;
   border: 1px solid black;
   width: auto;
   height: auto;
