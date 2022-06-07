@@ -20,7 +20,6 @@ function makeGrid(sideLength) {
           let green = Math.floor(Math.random() * 255);
           let blue = Math.floor(Math.random() * 255);
           let rgb = `rgb(${red},${green},${blue})`;
-          console.log(rgb);
           cell.style.backgroundColor = rgb;
         } else {
           cell.style.backgroundColor = selectedColor;
@@ -57,6 +56,18 @@ rgbButton.addEventListener("click", () => {
   } else {
     savedColor = selectedColor;
     selectedColor = "random";
+  }
+});
+
+let clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", () => {
+  let grid = document.querySelector(".grid");
+  let rows = grid.childNodes;
+  for (const row of rows) {
+    let cells = row.childNodes;
+    for (const cell of cells) {
+      cell.style.backgroundColor = "white";
+    }
   }
 });
 
