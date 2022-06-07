@@ -1,12 +1,11 @@
 let selectedColor = "yellow";
 
-function makeGrid() {
+function makeGrid(sideLength) {
   let grid = document.querySelector(".grid");
-  console.log(grid);
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < sideLength; i++) {
     let row = document.createElement("div");
     row.classList.add("row");
-    for (let j = 0; j < 16; j++) {
+    for (let j = 0; j < sideLength; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
       cell.addEventListener("mouseenter", () => {
@@ -17,4 +16,13 @@ function makeGrid() {
     grid.appendChild(row);
   }
 }
-makeGrid();
+
+let gridButtton = document.querySelector("#make");
+gridButtton.addEventListener("click", () => {
+  let answer = parseInt(
+    prompt("What would you like the new size of the grid to be?")
+  );
+  removeGrid();
+  makeGrid(answer);
+});
+makeGrid(16);
