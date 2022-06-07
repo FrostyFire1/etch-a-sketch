@@ -1,3 +1,5 @@
+let selectedColor = "yellow";
+
 function makeGrid() {
   let grid = document.querySelector(".grid");
   console.log(grid);
@@ -7,6 +9,9 @@ function makeGrid() {
     for (let j = 0; j < 16; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
+      cell.addEventListener("mouseenter", () => {
+        cell.style.backgroundColor = selectedColor;
+      });
       row.appendChild(cell);
     }
     grid.appendChild(row);
