@@ -17,6 +17,15 @@ function makeGrid(sideLength) {
   }
 }
 
+function removeGrid() {
+  let grid = document.querySelector(".grid");
+  while (grid.hasChildNodes()) {
+    let row = grid.childNodes[0];
+    grid.removeChild(row);
+    grid = document.querySelector(".grid");
+  }
+}
+
 let gridButtton = document.querySelector("#make");
 gridButtton.addEventListener("click", () => {
   let answer = parseInt(
